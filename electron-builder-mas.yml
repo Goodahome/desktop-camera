@@ -1,5 +1,5 @@
-appId: com.houdunren.camera
-productName: 桌面相机
+appId: com.goodahome.desktop-camera
+productName: desktop-camera
 directories:
   buildResources: build
 files:
@@ -13,7 +13,7 @@ asarUnpack:
   - resources/**
 afterSign: build/notarize.js
 win:
-  executableName: 桌面相机
+  executableName: desktop-camera
 nsis:
   artifactName: ${name}-${version}-setup.${ext}
   shortcutName: ${productName}

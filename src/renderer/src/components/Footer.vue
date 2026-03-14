@@ -19,6 +19,8 @@ const isRecording = ref(false)
 
 let mediaRecorder: MediaRecorder | null = null
 let recordedChunks: BlobPart[] = []
+/** 录像时单独获取的麦克风流，用于在停止录像后释放 */
+let recordAudioStream: MediaStream | null = null
 
 const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms))
 
@@ -88,17 +90,34 @@ const handleToggleRecord = async () => {
   if (!video || !video.srcObject) {
     return
   }
-  const stream = video.srcObject as MediaStream
+  const videoStream = video.srcObject as MediaStream
 
   if (!isRecording.value) {
     recordedChunks = []
+    recordAudioStream = null
     try {
-      mediaRecorder = new MediaRecorder(stream, {
-        mimeType: 'video/webm;codecs=vp9',
-        videoBitsPerSecond: 5_000_000
-      })
+      // 使用系统默认麦克风
+      recordAudioStream = await navigator.mediaDevices.getUserMedia({ audio: true })
+      const combinedStream = new MediaStream()
+      videoStream.getVideoTracks().forEach((t) => combinedStream.addTrack(t))
+      recordAudioStream.getAudioTracks().forEach((t) => combinedStream.addTrack(t))
+
+      const recOptions: MediaRecorderOptions = {
+        videoBitsPerSecond: 5_000_000,
+        audioBitsPerSecond: 128_000
+      }
+      if (MediaRecorder.isTypeSupported('video/webm;codecs=vp9,opus')) {
+        recOptions.mimeType = 'video/webm;codecs=vp9,opus'
+      } else if (MediaRecorder.isTypeSupported('video/webm;codecs=vp8,opus')) {
+        recOptions.mimeType = 'video/webm;codecs=vp8,opus'
+      } else {
+        recOptions.mimeType = 'video/webm'
+      }
+      mediaRecorder = new MediaRecorder(combinedStream, recOptions)
     } catch (e) {
       console.error(e)
+      recordAudioStream?.getTracks().forEach((t) => t.stop())
+      recordAudioStream = null
       return
     }
 
@@ -109,6 +128,8 @@ const handleToggleRecord = async () => {
     }
 
     mediaRecorder.onstop = async () => {
+      recordAudioStream?.getTracks().forEach((t) => t.stop())
+      recordAudioStream = null
       if (!recordedChunks.length) return
 
       const blob = new Blob(recordedChunks, { type: 'video/webm' })

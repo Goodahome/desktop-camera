@@ -13,7 +13,7 @@ asarUnpack:
   - resources/**
 afterSign: build/notarize.js
 win:
-  executableName: houdunren-camera
+  executableName: 桌面相机
 nsis:
   artifactName: ${name}-${version}-setup.${ext}
   shortcutName: ${productName}

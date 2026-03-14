@@ -14,7 +14,7 @@ ipcMain.handle('axios', async () => {
   axios.defaults.withCredentials = false
 
   const http = axios.create({
-    baseURL: 'http://houdunren.test/api',
+    baseURL: 'http://goodahome.com/api',
     timeout: 10000,
     withCredentials: false
   })

@@ -29,7 +29,7 @@ const showUpgradeBox = ref(false)
 const upgradeCheck = () => {
   axios
     .post('https://www.baidu.com/api/soft/upgrade/check', {
-      soft: 'houdunren-camera',
+      soft: 'desktop-camera',
       version: Package.version
     })
     .then((r: any) => {

@@ -113,7 +113,6 @@ const chooseSaveDir = async () => {
           >
           -->
         </div>
-        <!-- <span class="font-light opacity-70 mb-1">微信: houdunren2021</span> -->
         <span class="font-light opacity-70 text-xs text-gray-300">
           版本号: {{ packageJson.version }}
         </span>
