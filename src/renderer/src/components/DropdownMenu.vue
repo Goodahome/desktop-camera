@@ -27,6 +27,16 @@ const quit = () => window.api.quit()
   </div>
 </template>
 
+<style lang="scss" scoped>
+:deep(.el-dropdown__trigger) {
+  outline: none;
+}
+:deep(.el-dropdown__trigger:focus),
+:deep(.el-dropdown__trigger:focus-visible) {
+  outline: none;
+  box-shadow: none;
+}
+</style>
 <style lang="scss">
 [id*='popper'],
 .el-scrollbar {

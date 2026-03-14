@@ -1,5 +1,5 @@
 appId: com.houdunren.camera
-productName: 向军大叔桌面摄像头
+productName: 桌面相机
 directories:
   buildResources: build
 files:
@@ -13,7 +13,7 @@ asarUnpack:
   - resources/**
 afterSign: build/notarize.js
 win:
-  executableName: 向军大叔桌面摄像头
+  executableName: 桌面相机
 nsis:
   artifactName: ${name}-${version}-setup.${ext}
   shortcutName: ${productName}

@@ -28,6 +28,28 @@ const api = {
   openNewCamera: () => {
     ipcRenderer.send('openNewWindow')
   },
+  // 保存拍照图片
+  capturePhoto: (payload: { data: string; dir?: string; name?: string }) => {
+    return ipcRenderer.invoke('capturePhoto', payload)
+  },
+  // 选择保存目录
+  selectSaveDir: () => {
+    return ipcRenderer.invoke('selectSaveDir')
+  },
+  // 保存录像
+  saveVideo: (payload: { data: string; dir?: string; name?: string; mime?: string }) => {
+    return ipcRenderer.invoke('saveVideo', payload)
+  },
+  // UVC 摄像头控制
+  uvcListDevices: () => ipcRenderer.invoke('uvc:listDevices'),
+  uvcConnect: (vendorId: number, productId: number) =>
+    ipcRenderer.invoke('uvc:connect', vendorId, productId),
+  uvcDisconnect: () => ipcRenderer.invoke('uvc:disconnect'),
+  uvcPanTilt: (direction: 'up' | 'down' | 'left' | 'right') =>
+    ipcRenderer.invoke('uvc:panTilt', direction),
+  uvcZoom: (delta: number) => ipcRenderer.invoke('uvc:zoom', delta),
+  uvcIsConnected: () => ipcRenderer.invoke('uvc:isConnected'),
+  uvcAutoConnect: () => ipcRenderer.invoke('uvc:autoConnect'),
   axios: () => {
     return ipcRenderer.invoke('axios')
   }

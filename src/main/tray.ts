@@ -12,9 +12,9 @@ const createTray = () => {
   const contextMenu = Menu.buildFromTemplate([
     { label: '退出程序', role: 'quit' },
     { type: 'separator' },
-    { label: '问题反馈', click: () => shell.openExternal('https://www.houdunren.com') }
+    { label: '问题反馈', click: () => shell.openExternal('https://github.com/Goodahome/desktop-camera') }
   ])
-  tray.setToolTip('向军大叔摄像头')
+  tray.setToolTip('桌面相机')
   tray.setContextMenu(contextMenu)
 }
 

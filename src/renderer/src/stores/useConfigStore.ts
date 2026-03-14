@@ -22,6 +22,10 @@ export const useConfigStore = defineStore(
       videoElement: null as null | HTMLVideoElement,
       //镜像
       flip: false,
+      // 媒体保存目录
+      saveDir: '',
+      // 延时拍照（秒）
+      captureDelay: 0,
       token: {
         uid: '',
         secret: ''

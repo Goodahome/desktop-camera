@@ -8,6 +8,7 @@ import './menu'
 import './windowManage'
 import './contextMenu'
 import { createTray } from './tray'
+import { registerUvcIpc } from './uvcIpc'
 function createWindow(): void {
   const mainWindow = new BrowserWindow({
     width: 720,
@@ -72,6 +73,7 @@ app.whenReady().then(() => {
     optimizer.watchWindowShortcuts(window)
   })
 
+  registerUvcIpc()
   createWindow()
 
   app.on('activate', function () {
@@ -80,7 +82,7 @@ app.whenReady().then(() => {
     if (BrowserWindow.getAllWindows().length === 0) createWindow()
   })
   //隐藏苹果dock图标
-  if (process.platform == 'darwin') app.dock.hide()
+  if (process.platform === 'darwin') app.dock?.hide()
   //托盘
   createTray()
 })

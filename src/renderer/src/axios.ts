@@ -17,9 +17,7 @@ http.interceptors.response.use(
       ElMessage({
         message: error.response.data.message.replace(/\(.*?\)/, ''),
         type: 'error',
-        duration: 3000,
-        center: false,
-        grouping: true
+        duration: 3000
       })
     }
     return Promise.reject(error)
