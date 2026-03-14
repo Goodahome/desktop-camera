@@ -1,7 +1,5 @@
 # 桌面摄像头
 
-<img src="./assets/xj.jpg" alt="xj-small" style="border-radius: 10px;object-fit: cover;height:200px;" />
-
 基于 Electron+Vue3+Vite 开发的桌面摄像头软件，方便直播录课、短视频拍摄等场景。
 
 ## 功能特点
