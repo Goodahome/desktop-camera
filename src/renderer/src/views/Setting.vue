@@ -106,7 +106,7 @@ const chooseSaveDir = async () => {
           由向军大叔开源项目二开，特此感谢
           <!--
           <a
-            href="https://www.houdunren.com/live"
+            href="https://www.baidu.com/live"
             target="_blank"
             class="text-yellow-500 font-bold hover:text-orange-300"
             >晚八点直播</a

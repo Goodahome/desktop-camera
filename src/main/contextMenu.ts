@@ -16,7 +16,7 @@ ipcMain.on('contextMenu', (event: Electron.IpcMainEvent) => {
     },
     {
       label: '访问网站',
-      click: () => shell.openExternal('https://www.houdunren.com')
+      click: () => shell.openExternal('https://www.baidu.com')
     },
     {
       label: '退出',

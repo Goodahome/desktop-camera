@@ -12,7 +12,7 @@ if (!config.token) {
 const show = ref(false)
 const secretCheck = () => {
   axios
-    .post('https://www.houdunren.com/api/softSecret/check', {
+    .post('https://www.baidu.com/api/softSecret/check', {
       uid: config.token.uid,
       secret: config.token.secret
     })
@@ -28,7 +28,7 @@ secretCheck()
 const showUpgradeBox = ref(false)
 const upgradeCheck = () => {
   axios
-    .post('https://www.houdunren.com/api/soft/upgrade/check', {
+    .post('https://www.baidu.com/api/soft/upgrade/check', {
       soft: 'houdunren-camera',
       version: Package.version
     })

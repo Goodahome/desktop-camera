@@ -19,7 +19,7 @@ const quit = () => window.api.quit()
           <!-- <el-dropdown-item @click="config.page = 'secret'">学习口令</el-dropdown-item> -->
           <el-dropdown-item @click="quit">关闭镜头</el-dropdown-item>
           <!-- <el-dropdown-item>
-            <a href="https://www.houdunren.com" target="_blank">访问网站</a>
+            <a href="https://www.baidu.com" target="_blank">访问网站</a>
           </el-dropdown-item> -->
         </el-dropdown-menu>
       </template>
